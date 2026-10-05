@@ -1,0 +1,63 @@
+#include <iostream>
+using namespace std;
+
+class Queue {
+private:
+    int* arr;
+    int front;
+    int rear;
+    int cap;
+
+public:
+    Queue(int size) {
+        cap = size;
+        arr = new int[cap];
+        front = 0;
+        rear = -1;
+    }
+
+    ~Queue() {
+        delete[] arr;
+    }
+    bool full(){ return rear ==cap-1;}
+    bool empty() { return front>rear; }
+    void enqueue(int val)
+    {
+        if(full())
+            return;
+
+        rear++;
+        arr[rear] = val;
+    }
+    void dequeue(){
+        if(empty())
+            return;
+        front++;
+    }
+    int peek(){
+        if(empty())
+            return -1;
+        return arr[front];
+    }
+    void print(){
+        if(empty())
+            return;
+        for(int i=front;i<=rear;i++)
+            cout<<arr[i]<<" ";
+        cout<<endl;
+    }
+};
+    int main(){
+        Queue q(5);
+        q.enqueue(1);
+        q.enqueue(2);
+        q.enqueue(3);
+        q.enqueue(4);
+        q.print();
+        q.dequeue();
+        q.enqueue(5);
+        q.print();
+        return 0;
+    }
+
+  
