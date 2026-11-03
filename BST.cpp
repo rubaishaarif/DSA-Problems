@@ -13,7 +13,7 @@ class Node{
 			right= left = NULL;
 		}		
 };
-Node *insert(Node *root, int val) //insert 1 value at a time
+Node *insert(Node *root, int val) //insert single value at a time
 {
 	if(root==NULL){ //base case
 		root = new Node(val);
